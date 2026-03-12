@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_medium.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybedrane <ybedrane@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/12 13:28:01 by ybedrane          #+#    #+#             */
+/*   Updated: 2026/03/12 13:40:16 by ybedrane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	int_sqrt(int n)
@@ -26,17 +38,10 @@ static int	find_max_index(t_stack *b)
 	return (best);
 }
 
-void	sort_medium(t_ctx *ctx)
+static void	push_chunks_to_b(t_ctx *ctx, int chunk)
 {
 	int	i;
-	int	chunk;
-	int	n;
-	int	max_idx;
 
-	ctx->strategy_name = "medium";
-	ctx->complexity_class = "O(n*sqrt(n))";
-	n = ctx->a.size;
-	chunk = int_sqrt(n) + 1;
 	i = 0;
 	while (ctx->a.size > 0)
 	{
@@ -54,6 +59,12 @@ void	sort_medium(t_ctx *ctx)
 		else
 			op_ra(ctx, 1);
 	}
+}
+
+static void	restore_a_from_b(t_ctx *ctx)
+{
+	int	max_idx;
+
 	while (ctx->b.size > 0)
 	{
 		max_idx = find_max_index(&ctx->b);
@@ -68,4 +79,15 @@ void	sort_medium(t_ctx *ctx)
 		}
 		op_pa(ctx, 1);
 	}
+}
+
+void	sort_medium(t_ctx *ctx)
+{
+	int	chunk;
+
+	ctx->strategy_name = "medium";
+	ctx->complexity_class = "O(n*sqrt(n))";
+	chunk = int_sqrt(ctx->a.size) + 1;
+	push_chunks_to_b(ctx, chunk);
+	restore_a_from_b(ctx);
 }

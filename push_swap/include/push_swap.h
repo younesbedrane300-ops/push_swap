@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybedrane <ybedrane@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/12 13:28:36 by ybedrane          #+#    #+#             */
+/*   Updated: 2026/03/12 13:44:16 by ybedrane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -11,7 +23,7 @@ typedef enum e_strategy
 	STRAT_SIMPLE,
 	STRAT_MEDIUM,
 	STRAT_COMPLEX
-}t_strategy;
+}	t_strategy;
 
 typedef enum e_op
 {
@@ -27,20 +39,20 @@ typedef enum e_op
 	OP_RRB,
 	OP_RRR,
 	OP_COUNT
-}t_op;
+}	t_op;
 
 typedef struct s_stack
 {
 	int	*data;
 	int	size;
 	int	capacity;
-}t_stack;
+}	t_stack;
 
 typedef struct s_config
 {
 	t_strategy	strategy;
 	int			bench;
-}t_config;
+}	t_config;
 
 typedef struct s_ctx
 {
@@ -52,9 +64,10 @@ typedef struct s_ctx
 	double			disorder;
 	const char		*strategy_name;
 	const char		*complexity_class;
-}t_ctx;
+}	t_ctx;
 
 int		parse_input(t_ctx *ctx, int argc, char **argv);
+int		parse_checker_input(t_ctx *ctx, int argc, char **argv);
 void	free_ctx(t_ctx *ctx);
 
 void	op_sa(t_ctx *ctx, int emit);
@@ -91,5 +104,16 @@ int		parse_int_strict(const char *s, int *out);
 void	putstr_fd(const char *s, int fd);
 void	putnbr_fd(long n, int fd);
 void	putu2_fd(unsigned int n, int fd);
+
+int		ps_is_space(char c);
+int		ps_count_tokens(int argc, char **argv, int with_flags);
+int		ps_has_invalid_empty_arg(int argc, char **argv, int with_flags);
+int		ps_parse_token_span(const char *s, int start, int end, int *out);
+int		ps_fill_values(int *vals, int argc, char **argv, t_config *cfg);
+int		ps_fill_checker_values(int *vals, int argc, char **argv);
+void	ps_sort_ints(int *arr, int n);
+int		ps_binary_search(const int *arr, int n, int v);
+int		ps_has_duplicates(const int *sorted, int n);
+int		ps_alloc_stacks(t_ctx *ctx, int n);
 
 #endif

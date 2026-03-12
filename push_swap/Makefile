@@ -7,10 +7,18 @@ INCLUDES = -Iinclude
 SRC = \
 	src/main.c \
 	src/parse.c \
+	src/parse_scan.c \
+	src/parse_values.c \
+	src/parse_algo.c \
+	src/parse_metrics.c \
+	src/parse_alloc.c \
 	src/utils.c \
+	src/utils_num.c \
 	src/stack.c \
 	src/ops_swap_push.c \
+	src/ops_push.c \
 	src/ops_rotate.c \
+	src/ops_reverse_rotate.c \
 	src/sort_simple.c \
 	src/sort_medium.c \
 	src/sort_complex.c \
@@ -23,10 +31,18 @@ BONUS_SRC = \
 	src/checker_bonus.c \
 	src/checker_parse_bonus.c \
 	src/parse.c \
+	src/parse_scan.c \
+	src/parse_values.c \
+	src/parse_algo.c \
+	src/parse_metrics.c \
+	src/parse_alloc.c \
 	src/utils.c \
+	src/utils_num.c \
 	src/stack.c \
 	src/ops_swap_push.c \
+	src/ops_push.c \
 	src/ops_rotate.c \
+	src/ops_reverse_rotate.c \
 	src/bench.c
 
 BONUS_OBJ = $(BONUS_SRC:.c=.o)

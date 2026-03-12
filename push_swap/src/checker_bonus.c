@@ -1,6 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybedrane <ybedrane@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/12 13:27:31 by ybedrane          #+#    #+#             */
+/*   Updated: 2026/03/12 13:42:44 by ybedrane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	parse_checker_input(t_ctx *ctx, int argc, char **argv);
+#include "push_swap.h"
 
 static void	init_ctx(t_ctx *ctx)
 {
@@ -70,7 +80,7 @@ static int	read_and_apply(t_ctx *ctx)
 {
 	char	c;
 	char	line[5];
-	int	len;
+	int		len;
 
 	len = 0;
 	while (read(0, &c, 1) > 0)
